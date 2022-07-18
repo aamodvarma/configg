@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-for i in /sys/class/hwmon/hwmon*/temp*_input; do
-	if [ "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*}))" = "k10temp: Tctl" ]; then
-		export HWMON_PATH="$i"
-	fi
-done
-export DEFAULT_NETWORK_INTERFACE=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
-killall -q polybar
-echo "---" | tee -a /tmp/polybar1.log
-polybar mybar 2>&1 | tee -a /tmp/polybar1.log & disown
+# Terminate already running bar instances
+killall polybar
 
-echo "Bar launched"
+# Wait until the processes have been shut down
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+# Launch polybar
+polybar main -c $(dirname $0)/config.ini &
+
+if [[ $(xrandr -q | grep 'HDMI1 connected') ]]; then
+	polybar external -c $(dirname $0)/config.ini &
+fi

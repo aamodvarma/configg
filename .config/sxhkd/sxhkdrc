@@ -1,117 +1,91 @@
+#
 # wm independent hotkeys
+#
 
-# terminal emulator
-super + Return
-	st
+# printscreen
+@Print
+	screenshot
+
+shift + @Print
+	screenshot select
+
+control + @Print
+	screenshot window
+
+# brightness keys
+XF86MonBrightnessUp
+	changebrightness up
+
+XF86MonBrightnessDown
+	changebrightness down
+
+# media keys
+XF86Audio{Prev,Next}
+	playerctl {previous,next}
+
+XF86AudioPlay
+	playerctl play-pause
+
+# volume keys
+XF86AudioRaiseVolume
+	changevolume up
+
+XF86AudioLowerVolume
+	changevolume down
+
+XF86AudioMute
+	changevolume mute
+
+# lockscreen
+super + x
+	systemctl suspend
+
+
+super + shift + x
+	powermenu
 
 # program launcher
-alt + space
-	rofi -show drun
-
+alt + @space
+	rofi -terminal alacritty -show drun
 
 # make sxhkd reload its configuration files:
 super + Escape
+	~/.config/polybar/launch.sh
 	pkill -USR1 -x sxhkd
 
-# Print
-shift + @Print
-	screenshot -s
-alt   + @Print
-	imgtolink
-
-#Applications
-super + w
-	brave
-super + e
-        nautilus
-
-super + ctrl + shift + l
-	python ./Projects/PycharmProjects/SpotifyLyricsLatest/geniusapi.py
-
-super + ctrl + shift + m
-	/home/ajrv/Videos/1337x/rofimovie.sh
-
-super + ctrl + shift + t
-
-	/home/ajrv/Videos/1337x/transmission_stop.sh
-
-
-
-#Volume Control
-super + minus
-        pamixer -d 10
-super + equal
-        pamixer -i 10
-
-
-
+#
+# bspwm hotkeys
+#
 
 # quit/restart bspwm
-ctrl + super + shift + q
+super + alt + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
-super + q
-	bspc node -c
+super + {_,shift + }q
+	bspc node -{c,k}
 
-# alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
-
-# send the newest marked node to the newest preselected node
-super + y
-	bspc node newest.marked.local -n newest.!automatic.local
-
-# swap the current node and the biggest window
-alt + Return
-	bspc node -s biggest.local
-
+#
 #
 # state/flags
 #
 
-# set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + f
+	bspc node focused.tiled -t fullscreen || bspc node focused.fullscreen -t tiled
 
-# set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
-super + x
-	scratchtermtoggle
+super + p
+	bspc node focused.floating -t tiled
+
+super + t
+	bspc node focused.tiled -t floating
 
 #
 # focus/swap
 #
 
-super {_,shift + }{period}
-	bspc {monitor -f, node -m } next
-
-super {_,shift + }{comma}
-	bspc {monitor -f, node -m } next
-
-
-
-#super shift + {comma,period}
-####	bspc node -m  {west, east} --follow
-
-
-
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
-
-
-
-# focus the node for the given path jump
-#super + {p,b,comma,period}
-#	bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous window in the current desktop
-super + {_,shift + }n
-	bspc node -f {next,prev}.local.!hidden.window
-
-
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -121,40 +95,9 @@ super + bracket{left,right}
 super + {grave,Tab}
 	bspc {node,desktop} -f last
 
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
 # focus or send to the given desktop
-#super + {_,shift + }{1-9,0}
-#	bspc {desktop -f,node -d} '^{1-9,10}'
-#super + {_,shift + }{1-9,0}
-#	focusorsendDualMonitor {desktop,node} '{1-9,10}'
-
 super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} 'focused:^{1-9,10}'
-
-#
-# preselect
-#
-
-# preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
 # move/resize
@@ -171,3 +114,29 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# notifications
+ctrl + space
+  dunstctl close
+
+ctrl + shift + space
+  dunstctl close-all
+
+ctrl + shift + period
+  dunstctl context
+
+ctrl + grave
+  dunstctl history-pop
+
+ctrl + alt + x
+	xkill
+
+super + Return
+	$TERMINAL
+
+# browser
+super + {w, g, o, v, s}
+	{$BROWSER, gimp, obs, olive-editor, spotify}
+
+super + {e, m, c, n}
+	$TERMINAL -e {lf-ueberzug, neomutt, calcurse, ncmpcpp}
