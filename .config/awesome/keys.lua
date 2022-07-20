@@ -131,7 +131,11 @@ keys.globalkeys = gears.table.join(
         {description = "focus right", group = "client"}),
 
     -- Window switcher
+<<<<<<< HEAD
     awful.key({ superkey }, "Tab",
+=======
+    awful.key({ altkey  }, "Tab",
+>>>>>>> ea4b3a0 (change)
         function ()
             window_switcher_show(awful.screen.focused())
         end,
@@ -233,7 +237,11 @@ keys.globalkeys = gears.table.join(
         {description = "open a terminal", group = "launcher"}),
     -- Spawn floating terminal
     awful.key({ superkey }, "Return", function()
+<<<<<<< HEAD
         awful.spawn(user.floating_terminal, {floating = true})
+=======
+        awful.spawn(user.terminal, {floating = true})
+>>>>>>> ea4b3a0 (change)
                                                 end,
         {description = "spawn floating terminal", group = "launcher"}),
 
@@ -333,9 +341,13 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "r",
         function ()
             -- Not all sidebars have a prompt
+<<<<<<< HEAD
             if sidebar_activate_prompt then
                 sidebar_activate_prompt("run")
             end
+=======
+          awful.spawn.with_shell("rofi -show drun")
+>>>>>>> ea4b3a0 (change)
         end,
         {description = "activate sidebar run prompt", group = "awesome"}),
     -- Web search
@@ -525,13 +537,21 @@ keys.globalkeys = gears.table.join(
 
     -- Spawn file manager
     awful.key({ superkey }, "e", function()
+<<<<<<< HEAD
         awful.spawn.with_shell("thunar")
+=======
+        awful.spawn.with_shell(user.file_manager)
+>>>>>>> ea4b3a0 (change)
                                   end,
         {description = "thunar", group = "launcher"}),
     
     -- Spawn browser
     awful.key({ superkey }, "w", function()
+<<<<<<< HEAD
         awful.spawn.with_shell("brave")
+=======
+        awful.spawn.with_shell("brave-bin")
+>>>>>>> ea4b3a0 (change)
       end,
         {description = "brave", group = "browser"}),
 

@@ -76,6 +76,7 @@ local exit_screen_theme = exit_screen_themes[2]
 user = {
     -- >> Default applications <<
     -- Check apps.lua for more
+<<<<<<< HEAD
     terminal = "wezterm",
     floating_terminal = "wezterm",
     browser = "brave",
@@ -83,6 +84,16 @@ user = {
     editor = "wezterm -1 --class editor -e vim",
     email_client = "wezterm -1 --class email -e neomutt",
     music_client = "wezterm -o font_size=12 --class music -e ncmpcpp",
+=======
+    terminal = "alacritty",
+  --floating_terminal = "wezterm",
+    floating_terminal = "alacritty",
+    browser = "brave-bin",
+    file_manager = "alacritty --command lf",
+    editor = "alacritty --command nvim",
+    email_client = "alacritty -1 --class email -e neomutt",
+    music_client = "alacritty --command ncmpcpp",
+>>>>>>> ea4b3a0 (change)
 
     -- >> Web Search <<
     web_search_cmd = "xdg-open https://google.com/?q=",

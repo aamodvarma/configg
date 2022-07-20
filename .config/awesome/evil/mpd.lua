@@ -11,9 +11,15 @@
 local awful = require("awful")
 
 local function emit_info()
+<<<<<<< HEAD
     awful.spawn.easy_async_with_shell("sh -c 'mpc -f ARTIST@%artist%@TITLE@%title%@FILE@%file%@'",
         function(stdout)
             local artist = stdout:match('^ARTIST@(.*)@TITLE')
+=======
+    awful.spawn.easy_async_with_shell("sh -c ''",
+        function(stdout)
+            local artist = stdout:match('/^(.*)$/m')
+>>>>>>> ea4b3a0 (change)
             local title = stdout:match('@TITLE@(.*)@FILE')
             local status = stdout:match('\n%[(.*)%]')
 

@@ -205,4 +205,20 @@ textbox-prompt-colon {
     text-color: inherit;
 }
 
+<<<<<<< HEAD
 @import "colors.rasi"
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> ea4b3a0 (change)

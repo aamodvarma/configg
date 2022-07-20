@@ -43,10 +43,17 @@ local mpd_toggle_icon = wibox.widget {
 }
 mpd_toggle_icon:buttons(gears.table.join(
     awful.button({ }, 1, function ()
+<<<<<<< HEAD
         awful.spawn.with_shell("mpc -q toggle")
     end),
     awful.button({ }, 3, function ()
         awful.spawn.with_shell("mpvc toggle")
+=======
+        awful.spawn.with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
+    end),
+    awful.button({ }, 3, function ()
+        awful.spawn.with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
+>>>>>>> ea4b3a0 (change)
     end)
 ))
 
@@ -57,10 +64,17 @@ local mpd_prev_icon = wibox.widget {
 }
 mpd_prev_icon:buttons(gears.table.join(
     awful.button({ }, 1, function ()
+<<<<<<< HEAD
         awful.spawn.with_shell("mpc -q prev")
     end),
     awful.button({ }, 3, function ()
         awful.spawn.with_shell("mpdc prev")
+=======
+        awful.spawn.with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+    end),
+    awful.button({ }, 3, function ()
+        awful.spawn.with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+>>>>>>> ea4b3a0 (change)
     end)
 ))
 
@@ -71,10 +85,17 @@ local mpd_next_icon = wibox.widget {
 }
 mpd_next_icon:buttons(gears.table.join(
     awful.button({ }, 1, function ()
+<<<<<<< HEAD
         awful.spawn.with_shell("mpc -q next")
     end),
     awful.button({ }, 3, function ()
         awful.spawn.with_shell("mpdc next")
+=======
+        awful.spawn.with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
+    end),
+    awful.button({ }, 3, function ()
+        awful.spawn.with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
+>>>>>>> ea4b3a0 (change)
     end)
 ))
 
