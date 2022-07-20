@@ -34,11 +34,7 @@ helpers.remote_watch(coronavirus_script, update_interval, temp_file, function(st
 
     -- If it is found, we assume the command succeeded
     if cases_total then
-<<<<<<< HEAD
-        awesome.emit_signal("evil::coronavirus", cases_total, cases_today, deaths_total, deaths_today)
-=======
         awesome.emit_signal("evil::coronavirus", 10, 1, 10, 1)
->>>>>>> ea4b3a0 (change)
     else
         -- Remove temp_file to force an update the next time
         awful.spawn.with_shell("rm "..temp_file)

@@ -23,48 +23,6 @@ end
 
 -- Item configuration
 -- ==================
-<<<<<<< HEAD
--- Weather widget with text icons
-local weather_widget = require("noodle.text_weather")
-local weather_widget_icon = weather_widget:get_all_children()[1]
--- weather_widget_icon.font = "Typicons 18"
-weather_widget_icon.font = "icomoon 16"
-weather_widget_icon.align = "center"
-weather_widget_icon.valign = "center"
--- So that content does not get cropped
--- weather_widget_icon.forced_width = dpi(50)
-local weather_widget_description = weather_widget:get_all_children()[2]
-weather_widget_description.font = "sans medium 14"
-local weather_widget_temperature = weather_widget:get_all_children()[3]
-weather_widget_temperature.font = "sans medium 14"
-
-local weather = wibox.widget{
-    {
-        nil,
-        weather_widget_description,
-        expand = "none",
-        layout = wibox.layout.align.horizontal
-    },
-    {
-        nil,
-        {
-            weather_widget_icon,
-            weather_widget_temperature,
-            spacing = dpi(5),
-            layout = wibox.layout.fixed.horizontal
-        },
-        expand = "none",
-        layout = wibox.layout.align.horizontal
-    },
-    spacing = dpi(5),
-    layout = wibox.layout.fixed.vertical
-    -- nil,
-    -- weather_widget,
-    -- layout = wibox.layout.align.horizontal,
-    -- expand = "none"
-}
-=======
->>>>>>> ea4b3a0 (change)
 
 local temperature_bar = require("noodle.temperature_bar")
 local temperature = format_progress_bar(temperature_bar)
@@ -92,29 +50,6 @@ ram:buttons(
 ))
 
 
-<<<<<<< HEAD
-local brightness_bar = require("noodle.brightness_bar")
-local brightness = format_progress_bar(brightness_bar)
-
-brightness:buttons(
-    gears.table.join(
-        -- Left click - Toggle redshift
-        awful.button({ }, 1, apps.night_mode),
-        -- Right click - Reset brightness (Set to max)
-        awful.button({ }, 3, function ()
-            awful.spawn.with_shell("light -S 100")
-        end),
-        -- Scroll up - Increase brightness
-        awful.button({ }, 4, function ()
-            awful.spawn.with_shell("light -A 10")
-        end),
-        -- Scroll down - Decrease brightness
-        awful.button({ }, 5, function ()
-            awful.spawn.with_shell("light -U 10")
-        end)
-))
-=======
->>>>>>> ea4b3a0 (change)
 
 local hours = wibox.widget.textclock("%H")
 local minutes = wibox.widget.textclock("%M")
@@ -180,23 +115,6 @@ mpd_artist.font = "sans medium 10"
 -- Might need to be adjusted depending on the font.
 mpd_title.forced_height = dpi(22)
 mpd_artist.forced_height = dpi(16)
-<<<<<<< HEAD
-
-mpd_song:buttons(gears.table.join(
-    awful.button({ }, 1, function ()
-        awful.spawn.with_shell("mpc -q toggle")
-    end),
-    awful.button({ }, 3, apps.music),
-    awful.button({ }, 4, function ()
-        awful.spawn.with_shell("mpc -q prev")
-    end),
-    awful.button({ }, 5, function ()
-        awful.spawn.with_shell("mpc -q next")
-    end)
-))
-
-=======
->>>>>>> ea4b3a0 (change)
 local search_icon = wibox.widget {
     font = "icomoon bold 10",
     align = "center",
@@ -301,14 +219,6 @@ volume:buttons(gears.table.join(
     end)
 ))
 
-<<<<<<< HEAD
--- Battery
-local cute_battery_face = require("noodle.cute_battery_face")
-cute_battery_face:buttons(gears.table.join(
-    awful.button({ }, 1, apps.battery_monitor)
-))
-=======
->>>>>>> ea4b3a0 (change)
 
 -- Create tooltip widget
 -- It should change depending on what the user is hovering over
@@ -344,15 +254,6 @@ local create_tooltip = function(w)
 
     return tooltip
 end
-<<<<<<< HEAD
-
-local brightness_tooltip = create_tooltip(brightness_bar)
-awesome.connect_signal("evil::brightness", function(value)
-    brightness_tooltip.markup = "Your screen is <span foreground='" .. beautiful.brightness_bar_active_color .."'><b>" .. tostring(value) .. "%</b></span> bright"
-end)
-
-=======
->>>>>>> ea4b3a0 (change)
 local cpu_tooltip = create_tooltip(cpu_bar)
 awesome.connect_signal("evil::cpu", function(value)
     cpu_tooltip.markup = "You are using <span foreground='" .. beautiful.cpu_bar_active_color .."'><b>" .. tostring(value) .. "%</b></span> of CPU"
@@ -373,34 +274,17 @@ end)
 
 local temperature_tooltip = create_tooltip(temperature_bar)
 awesome.connect_signal("evil::temperature", function(value)
-<<<<<<< HEAD
-    temperature_tooltip.markup = "Your CPU temperature is at <span foreground='" .. beautiful.temperature_bar_active_color .."'><b>" .. tostring(value) .. "°C</b></span>"
-end)
-
-local battery_tooltip = create_tooltip(cute_battery_face)
-awesome.connect_signal("evil::battery", function(value)
-    battery_tooltip.markup = "Your battery is at <span foreground='" .. beautiful.battery_bar_active_color .."'><b>" .. tostring(value) .. "%</b></span>"
-end)
-=======
     temperature_tooltip.markup = "Your GPU temperature is at <span foreground='" .. beautiful.temperature_bar_active_color .."'><b>" .. tostring(value) .. "°C</b></span>"
 end)
 
->>>>>>> ea4b3a0 (change)
 
 -- Add clickable mouse effects on some widgets
 helpers.add_hover_cursor(cpu, "hand1")
 helpers.add_hover_cursor(ram, "hand1")
 helpers.add_hover_cursor(temperature, "hand1")
 helpers.add_hover_cursor(volume, "hand1")
-<<<<<<< HEAD
-helpers.add_hover_cursor(brightness, "hand1")
 helpers.add_hover_cursor(mpd_song, "hand1")
 helpers.add_hover_cursor(search, "xterm")
-helpers.add_hover_cursor(cute_battery_face, "hand1")
-=======
-helpers.add_hover_cursor(mpd_song, "hand1")
-helpers.add_hover_cursor(search, "xterm")
->>>>>>> ea4b3a0 (change)
 
 
 -- Create the sidebar
@@ -498,10 +382,6 @@ sidebar:setup {
                 helpers.vertical_pad(dpi(25)),
                 {
                     nil,
-<<<<<<< HEAD
-                    cute_battery_face,
-=======
->>>>>>> ea4b3a0 (change)
                     expand = "none",
                     layout = wibox.layout.align.horizontal,
                 },
@@ -513,10 +393,6 @@ sidebar:setup {
         { ----------- MIDDLE GROUP -----------
             {
                 helpers.vertical_pad(dpi(30)),
-<<<<<<< HEAD
-                weather,
-=======
->>>>>>> ea4b3a0 (change)
                 {
                     {
                         mpd_buttons,
@@ -537,10 +413,6 @@ sidebar:setup {
                         cpu,
                         temperature,
                         ram,
-<<<<<<< HEAD
-                        brightness,
-=======
->>>>>>> ea4b3a0 (change)
                         spacing = dpi(5),
                         -- layout = wibox.layout.fixed.vertical
                         layout = wibox.layout.fixed.horizontal

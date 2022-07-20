@@ -9,10 +9,7 @@ local cpu_idle_script = [[
   vmstat 1 2 | tail -1 | awk '{printf \"%d\", $15}'
   "]]
 
-<<<<<<< HEAD
-=======
 
->>>>>>> ea4b3a0 (change)
 -- Periodically get cpu info
 awful.widget.watch(cpu_idle_script, update_interval, function(widget, stdout)
     -- local cpu_idle = stdout:match('+(.*)%.%d...(.*)%(')

@@ -1,224 +1,173 @@
 configuration {
-    modi: "combi,windowcd,run";
-    lines: 10;
-    columns: 2;
-    font: "sans 13";
-    bw: 0;
-    location: 0;
-    padding: 0;
-    fixed-num-lines: true;
-    show-icons: false;
-    sidebar-mode: true;
-    combi-modi: "window,run";
-    separator-style: "none";
-    hide-scrollbar: true;
-    fullscreen: false;
-    fake-transparency: false;
-    scroll-method: 1;
-    window-format: "[{w}] ·· {c} ··   {t}";
-    click-to-exit: true;
-    show-match: false;
-    color-normal: "@xbg, @xfg, @xbg, @xfg, @xbg";
-    color-urgent: "@xbg, @x1, @xbg, @x1, @xfg";
-    color-active: "@xbg, @xfg, @xbg, @xfg, @xbg";
-    color-window: "@xbg, @x1, @xfg";
-    combi-hide-mode-prefix: false;
-    display-window: "";
-    display-windowcd: "";
-    display-run: "";
-    display-ssh: "";
-    display-drun: "";
-    display-combi: "";
-    kb-remove-word-back: "Control+BackSpace,Alt+d,Alt+BackSpace";
-    kb-accept-entry: "Control+m,Return,KP_Enter,Alt+m";
-    kb-mode-next: "Shift+Right,Control+Tab,Alt+l,Alt+Tab";
-    kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab,Alt+h";
-    kb-row-left: "Control+Page_Up,Control+Alt+h";
-    kb-row-right: "Control+Page_Down,Control+Alt+l";
-    kb-row-up: "Up,Control+p,ISO_Left_Tab,Alt+k";
-    kb-row-down: "Down,Control+n,Alt+j";
-    kb-select-1: "";
-    kb-select-2: "";
-    kb-select-3: "";
-    kb-select-4: "";
-    kb-select-5: "";
-    kb-select-6: "";
-    kb-select-7: "";
-    kb-select-8: "";
-    kb-select-9: "";
-    kb-select-10: "";
-    me-select-entry: "";
-    me-accept-entry: "MousePrimary";
-    me-accept-custom: "MouseMiddle";
+	font:                   "Mono 11";
+	modi:                   "drun,windowcd,window";
+	show-icons:             true;
+	display-drun:           "𝛌";
+	drun-display-format:    "{name}";
+	display-windowcd:       "𝛅";
+	display-window:         "γ";
+	window-format:          "[{w} ... {c} ... {t}";
+	click-to-exit:          true;
+	combi-hide-mode-prefix: false;
 }
+
 * {
-    selected-normal-foreground:  rgba ( 52, 60, 72, 100 % );
-    foreground:                  rgba ( 224, 224, 224, 100 % );
-    normal-foreground:           @foreground;
-    alternate-normal-background: rgba ( 52, 60, 72, 100 % );
-    red:                         rgba ( 220, 50, 47, 100 % );
-    selected-urgent-foreground:  rgba ( 224, 224, 224, 100 % );
-    blue:                        rgba ( 38, 139, 210, 100 % );
-    urgent-foreground:           rgba ( 240, 98, 146, 100 % );
-    alternate-urgent-background: rgba ( 52, 60, 72, 100 % );
-    active-foreground:           rgba ( 224, 224, 224, 100 % );
-    lightbg:                     rgba ( 238, 232, 213, 100 % );
-    selected-active-foreground:  rgba ( 52, 60, 72, 100 % );
-    alternate-active-background: rgba ( 52, 60, 72, 100 % );
-    background:                  rgba ( 52, 60, 72, 100 % );
-    alternate-normal-foreground: @foreground;
-    normal-background:           rgba ( 52, 60, 72, 100 % );
-    lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  rgba ( 224, 224, 224, 100 % );
-    border-color:                rgba ( 240, 98, 146, 100 % );
-    spacing:                     2;
-    separatorcolor:              rgba ( 224, 224, 224, 100 % );
-    urgent-background:           rgba ( 52, 60, 72, 100 % );
-    selected-urgent-background:  rgba ( 240, 98, 146, 100 % );
-    alternate-urgent-foreground: @urgent-foreground;
-    background-color:            rgba ( 0, 0, 0, 0 % );
-    alternate-active-foreground: @active-foreground;
-    active-background:           rgba ( 52, 60, 72, 100 % );
-    selected-active-background:  rgba ( 224, 224, 224, 100 % );
+	bg: #1a1a24;
+	fg: #e6e6f1;
+	accent: #e6e6f1;
+	background-color: @bg;
 }
+
 window {
-    background-color: @xbg;
-    border: 0;
-    border-color: @x14;
-    border-radius: 12px;
-    padding: 40;
-    width: 50%;
-    height: 50%;
+	border: 0px;
+	border-color: #b1dba4;
+	border-radius: 0px;
+	padding: 0px;
+	width: 35%;
+	height: 35%;
 }
-mainbox {
-    border: 0;
-    border-color: @x0;
-    padding: 6;
-}
-message {
-    border: 0px;
-    border-color: @x6;
-    padding: 1px;
-}
-textbox {
-    text-color: @xfg;
-}
-listview {
-    fixed-height: 0;
-    border: 0px;
-    border-color: @x6;
-    spacing: 2px;
-    scrollbar: false;
-    padding: 2px 0px 0px;
-}
-element {
-    border: 0;
-    padding: 1px;
-}
-element normal.normal {
-    background-color: rgba (0,0,0,0%);
-    text-color:       @xfg;
-}
-element normal.urgent {
-    background-color: rgba (0,0,0,0%);
-    text-color:       @x9;
-}
-element normal.active {
-    background-color: rgba (0,0,0,0%);
-    text-color:       @x5;
-}
-element selected.normal {
-    background-color: rgba (0,0,0,0%);
-    text-color:       @x13;
-}
-element selected.urgent {
-    background-color: rgba (0,0,0,0%);
-    text-color:       @x13;
-}
-element selected.active {
-    background-color: rgba (0,0,0,0%);
-    text-color:       @x13;
-}
-element alternate.normal {
-    background-color: rgba (0,0,0,0%);
-    text-color:       @xfg;
-}
-element alternate.urgent {
-    background-color: rgba (0,0,0,0%);
-    text-color:       @x9;
-}
-element alternate.active {
-    background-color: rgba (0,0,0,0%);
-    text-color:       @x5;
-}
-scrollbar {
-    width:        4px ;
-    border:       0;
-    handle-color: @xfg;
-    handle-width: 8px ;
-    padding:      0;
-}
-sidebar {
-    border:       0px;
-    border-color: @x4;
-    border-radius: 20px;
-}
-button {
-    margin: 5px;
-    padding: 5px;
-    background-color: @xbg;
-    text-color: @x8;
-    border: 0px;
-    border-radius: 20px;
-    border-color: @x8;
-}
-button selected {
-    background-color: @xbg;
-    text-color:       @x7;
-    border:       3px;
-    border-radius: 20px;
-    border-color:     @x7;
-}
-inputbar {
-    spacing:    0px ;
-    text-color: @xfg;
-    padding:    1px ;
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-}
-case-indicator {
-    spacing:    0;
-    text-color: @xfg;
-}
-entry {
-    spacing:    0;
-    text-color: @xfg;
-}
+
 prompt {
-    spacing:    0;
-    border:     0;
-    text-color: @xfg;
+	spacing: 0;
+	border: 0;
+	text-color: @fg;
 }
+
 textbox-prompt-colon {
-    expand:     false;
-    str:        "  ";
-    margin:     0px 0.3000em 0.0000em 0.0000em ;
-    text-color: inherit;
+	expand: false;
+	str: " ";
+	/*margin: 0px 4px 0px 0px;*/
+	text-color: inherit;
 }
 
-<<<<<<< HEAD
-@import "colors.rasi"
-=======
+entry {
+	spacing: 0;
+	text-color: @fg;
+}
 
+case-indicator {
+	spacing: 0;
+	text-color: @fg;
+}
 
+inputbar {
+	spacing: 0px;
+	text-color: @fg;
+	padding: 1em;
+	children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
 
+mainbox {
+	/*border: 1em;*/
+	border-color: @fg;
+	/*padding: 5em;*/
+}
 
+listview {
+	lines: 5;
+	columns: 2;
+	fixed-height: 0;
+	border: 0px;
+	border-color: @bg;
+	spacing: 0.2em;
+	scrollbar: false;
+	padding: 1em;
+}
 
+element-text {
+	background-color: #00000000;
+	text-color: inherit;
+	vertical-align: 0.5;
+}
 
+element-icon {
+	background-color: #00000000;
+	text-color: inherit;
+	/*size: 2.3ch;*/
+	size: 1.2em;
+}
 
+element {
+	border: 0px;
+	padding: 1px;
+}
 
+element normal.normal {
+	background-color: @bg;
+	text-color: @fg;
+}
 
+element normal.urgent {
+	background-color: @bg;
+	text-color: @fg;
+}
 
+element normal.active {
+	background-color: @bg;
+	text-color: @fg;
+}
 
+element selected.normal {
+	background-color: @fg;
+	text-color: @bg;
+}
 
+element selected.urgent {
+	background-color: @fg;
+	text-color: @bg;
+}
 
->>>>>>> ea4b3a0 (change)
+element selected.active {
+	background-color: @fg;
+	text-color: @bg;
+}
+
+element alternate.normal {
+	background-color: @bg;
+	text-color: @fg;
+}
+
+element alternate.active {
+	background-color: @bg;
+	text-color: @fg;
+}
+
+element alternate.urgent {
+	background-color: @bg;
+	text-color: @bg;
+}
+
+sidebar {
+	border: 0px;
+	border-color: @accent;
+	border-radius: 0px;
+}
+
+button {
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+	margin: 5px;
+	padding: 5px;
+	text-color: @fg;
+	border: 3px;
+	border-radius: 0px;
+	border-color: @fg;
+}
+
+button selected {
+	text-color: @fg;
+	border: 3px;
+	border-radius: 20px;
+	border-color: @accent;
+}
+
+message {
+	border: 0px;
+	border-color: @accent;
+	padding: 1px;
+}
+
+textbox {
+	text-color: @fg;
+}
+
